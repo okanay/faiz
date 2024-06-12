@@ -10,7 +10,7 @@ export const Button = forwardRef<Ref, Props>(
       <button
         ref={ref}
         className={twMerge(
-          "block w-full rounded-lg border border-white bg-blue-500 p-2.5 text-sm text-white",
+          "block h-[40px] w-full rounded-lg border border-white bg-blue-500 px-2.5 text-sm text-white",
           className
         )}
         {...props}

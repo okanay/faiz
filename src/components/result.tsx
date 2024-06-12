@@ -64,7 +64,11 @@ export const Result = () => {
         ))}
       </div>
 
-      <div className="absolute bottom-4 left-0 flex w-[320px] justify-between">
+      <div
+        className={`absolute ${
+          index === 0 ? "bottom-[64px]" : "bottom-[22px]"
+        } left-0 flex w-[320px] justify-between transition-all duration-300`}
+      >
         <Button
           className="w-fit text-sm"
           onMouseDown={() => {
