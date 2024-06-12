@@ -11,7 +11,7 @@ export const Result = () => {
   if (length === 0) return null;
 
   return (
-    <div className="relative h-[320px] w-[320px] overflow-hidden">
+    <div className="relative h-[320px] w-[320px] overflow-hidden md:mt-[28px]">
       <div
         className="absolute left-0 top-0 flex h-full gap-4 transition-all duration-300"
         style={{
@@ -46,6 +46,12 @@ export const Result = () => {
                 {priceFormat(item.monthlyInterestEarning)}
               </p>
             </div>
+            <div className="flex w-full justify-between">
+              <h4 className="font-base text-blue-400">Toplam Faiz Kazancı</h4>
+              <p className="font-semibold underline underline-offset-4">
+                {priceFormat(item.totalMoneyWithInterest - item.totalDebt)}
+              </p>
+            </div>
             {i > 0 && (
               <div className="flex w-full justify-between">
                 <h4 className="font-base text-blue-400">Kalan Borç</h4>
@@ -54,19 +60,21 @@ export const Result = () => {
                 </p>
               </div>
             )}
-            <div className="flex w-full justify-between">
-              <h4 className="font-base text-blue-400">Toplam Faiz Kazancı</h4>
-              <p className="font-semibold underline underline-offset-4">
-                {priceFormat(item.totalMoneyWithInterest - item.totalDebt)}
-              </p>
-            </div>
+            {i > 0 && (
+              <div className="flex w-full justify-between">
+                <h4 className="font-base text-blue-400">Ana Para</h4>
+                <p className="font-semibold underline underline-offset-4">
+                  {priceFormat(item.totalMoneyWithInterest)}
+                </p>
+              </div>
+            )}
           </div>
         ))}
       </div>
 
       <div
         className={`absolute ${
-          index === 0 ? "bottom-[64px]" : "bottom-[22px]"
+          index === 0 ? "bottom-[50px]" : "bottom-[0px]"
         } left-0 flex w-[320px] justify-between transition-all duration-300`}
       >
         <Button
