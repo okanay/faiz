@@ -23,12 +23,12 @@ const Form = () => {
     const result = calculatePayments(price, interest, installment);
 
     if (result.length === 0) return;
-    setResult(result.reverse());
+    setResult(result);
   }
 
   return (
     <form
-      className="flex w-full max-w-[320px] flex-shrink-0 flex-col items-start justify-start gap-4 tracking-wider"
+      className="flex w-[320px] flex-shrink-0 flex-col items-start justify-center gap-4 tracking-wider"
       onSubmit={onSubmit}
     >
       <Wrapper>
@@ -63,7 +63,7 @@ const Form = () => {
           placeholder={"1 Taksit"}
           defaultValue={1}
           className={"w-full"}
-          topics={Array.from({ length: 120 }, (_, i) => String(i + 1))}
+          topics={Array.from({ length: 118 }, (_, i) => String(i + 3))}
           onChange={(event) => {
             setInstallment(Number(event.target.value));
           }}
