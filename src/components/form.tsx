@@ -8,11 +8,13 @@ import { InputCurrency } from "@/components/form-ui/currency-input";
 import { Button } from "@/components/form-ui/button";
 import { calculatePayments } from "@/utils/calculate";
 import useResult from "@/hooks/useResult";
+import InputChecked from "@/components/form-ui/input-checked";
 
 const Form = () => {
   const [price, setPrice] = useState<number>(0);
   const [interest, setInterest] = useState<number>(0);
   const [installment, setInstallment] = useState<number>(1);
+  const [tax, setTax] = useState<boolean>(false);
 
   const { setResult } = useResult();
 
@@ -20,7 +22,7 @@ const Form = () => {
     event.preventDefault();
     setResult([]);
 
-    const result = calculatePayments(price, interest, installment);
+    const result = calculatePayments(price, interest, installment, tax);
 
     if (result.length === 0) return;
     setResult(result);
@@ -32,7 +34,7 @@ const Form = () => {
       onSubmit={onSubmit}
     >
       <Wrapper>
-        <Label htmlFor="price">Fiyat</Label>
+        <Label htmlFor="price">Ürün Fiyatı</Label>
         <InputCurrency
           id="price"
           name="price"
@@ -44,7 +46,7 @@ const Form = () => {
         />
       </Wrapper>
       <Wrapper>
-        <Label htmlFor="interest">Faiz</Label>
+        <Label htmlFor="interest">Faiz Oranı</Label>
         <InputCurrency
           id="interest"
           name="interest"
@@ -54,6 +56,27 @@ const Form = () => {
             setInterest(Number(event));
           }}
         />
+      </Wrapper>
+      <Wrapper>
+        <Label>Faiz Geliri Vergisi</Label>
+        <div className={"flex flex-row items-center justify-start gap-2"}>
+          <InputChecked
+            name={"auto-radio"}
+            id={"auto-radio"}
+            onChange={() => setTax(true)}
+            checked={tax}
+          >
+            Otomatik
+          </InputChecked>
+          <InputChecked
+            name={"close-radio"}
+            id={"close-radio"}
+            onChange={() => setTax(false)}
+            checked={!tax}
+          >
+            Kapalı
+          </InputChecked>
+        </div>
       </Wrapper>
       <Wrapper>
         <Label htmlFor="installment">Taksit</Label>
