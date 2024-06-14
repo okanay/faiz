@@ -79,7 +79,7 @@ const Form = () => {
         </div>
       </Wrapper>
       <Wrapper>
-        <Label htmlFor="installment">Taksit</Label>
+        <Label htmlFor="installment">Taksit Sayısı</Label>
         <Select
           id="installment"
           name={"installment"}
